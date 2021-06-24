@@ -1,5 +1,9 @@
 import "./Navbar.css"
 
 export default function Navbar () {
-    return <h1>Navbar</h1>
+    return (
+        <div className="navbar">
+            <span className="navbar-logo">Life Tracker</span>
+        </div>
+    )
 }

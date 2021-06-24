@@ -1,3 +1,8 @@
-h1 {
-    color: red;
+.Hero {
+    display: flex;
+    margin: 0 4rem;
+}
+.Hero .Hero-text {
+    flex: 2;
+    font-size: 5rem;
 }
