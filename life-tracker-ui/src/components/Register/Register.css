@@ -1,0 +1,39 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 5rem 2rem;
+    /* background-color: var(--tertiary-color); */
+}
+.register .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 60%;
+
+    border: solid 1px black;
+    border-radius: 0.8em;
+    background-color: var(--main-bg-color);
+}
+.register .card .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 1em;
+}
+.register .card .form .input-field {
+    padding: 0.5em;
+}
+.register .card .form label {
+    padding-right: 9px;
+}
+.register .card .footer {
+    font-size: 0.8em;
+}
+.register .card .footer a {
+    text-decoration: underline;
+}
