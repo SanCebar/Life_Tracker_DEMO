@@ -6,3 +6,13 @@ CREATE TABLE users (
     is_admin BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE exercises (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    category TEXT,
+    duration INTEGER,
+    intensity INTEGER,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    timestamp TIMESTAMP DEFAULT NOW()
+);

@@ -1,10 +1,10 @@
 const express = require("express")
-const { User } = require("../models/user")
+const User = require("../models/user")
 const { createUserJwt } = require("../utils/tokens")
 const { requireAuthenticatedUser } = require("../middleware/security")
 const router = express.Router()
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", requireAuthenticatedUser, async (req, res, next) => {
     try {
         const user = await User.login(req.body)
         const token = createUserJwt(user)
