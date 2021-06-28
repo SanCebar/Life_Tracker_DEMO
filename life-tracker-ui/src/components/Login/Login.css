@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    padding: 5rem 2rem;
+    min-height: 100vh;
+    padding: 5em 2em;
     /* background-color: var(--tertiary-color); */
 }
 .login .card {
@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     margin: 0 auto;
     width: 60%;
 
@@ -23,16 +23,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    font-size: 1em;
+    font-size: 1rem;
 }
 .login .card .form .input-field {
+    display: flex;
+    flex-direction: column;
     padding: 0.5em;
 }
+.login .card .form .input-field .error {
+    align-self: flex-end;
+    color: red;
+    font-size: 0.8rem;
+}
 .login .card .form label {
-    padding-right: 9px;
+    margin-bottom: 5px;
+}
+.login .card .form button {
+    align-self: center;
+    margin-top: 1em;
 }
 .login .card .footer {
-    font-size: 0.8em;
+    font-size: 0.8rem;
 }
 .login .card .footer a {
     text-decoration: underline;

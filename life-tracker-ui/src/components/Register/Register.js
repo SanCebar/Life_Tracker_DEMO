@@ -3,9 +3,18 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 
 export default function Register() {
+    const [isLoading, setIsLoading] = useState(false)
+    const [errors, setErrors] = useState({})
+    const [form, setForm] = useState({
+        email: "",
+        password: ""
+    })
+
   return (
     <div className="register">
-        <h2>Register</h2>
+      <h2>Sign Up</h2>
+      {errors.form && <div className="error">{errors.form}</div>}
+      <br/>
       <div class="card">
         <div className="form">
           <div className="input-field">
@@ -23,11 +32,12 @@ export default function Register() {
             <input
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="password123"
               // value={form.email}
               // onChange={handleOnInputChange}
             />
           </div>
+          <button>{isLoading ? "Loading..." : "Sign Up"}</button>
         </div>
         <div className="footer">
           <p>
