@@ -5,6 +5,7 @@
     min-height: 100vh;
     padding: 5em 2em;
     /* background-color: var(--tertiary-color); */
+    color: var(--main-text-color);
 }
 .error {
     color: red;
@@ -17,11 +18,13 @@
     align-items: center;
     padding: 1em;
     margin: 0 auto;
-    width: 60%;
+    width: 50%;
 
     border: solid 1px black;
+    color: var(--main-bg-color);
     border-radius: 0.8em;
-    background-color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    box-shadow: 0.8em 0.8em 10px -2px var(--box-shadow-color);
 }
 .login .card .form {
     display: flex;
@@ -39,6 +42,7 @@
 }
 .login .card .form label {
     margin-bottom: 5px;
+    font-weight: 500;
 }
 .login .card .form button {
     align-self: center;
@@ -49,4 +53,5 @@
 }
 .login .card .footer a {
     text-decoration: underline;
+    color: var(--main-bg-color);
 }

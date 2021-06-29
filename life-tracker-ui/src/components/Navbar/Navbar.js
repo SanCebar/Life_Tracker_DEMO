@@ -1,9 +1,11 @@
 import { NavLink as Link } from "react-router-dom"
+import apiClient from "../../services/apiClient";
 import "./Navbar.css";
 
 export default function Navbar({ user, setUser }) {
   const handleOnSignOut = (event) => {
     setUser({})
+    apiClient.setToken(null)
   }
 
   return (
