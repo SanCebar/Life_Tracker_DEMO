@@ -38,6 +38,7 @@ class ApiClient {
     async registerUser(credentials) {
         return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials})
     }
+
 }
 
 export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001")

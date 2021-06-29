@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
 
-    /* background-color: black;
-    color: #fff; */
+    background: transparent;
+    /* background-color: black; */
 
     margin-bottom: 1rem;
     padding: 1rem;
@@ -20,6 +20,7 @@
 .navbar .content .logo {
     /* flex: 1; */
     font-size: 2rem;
+    color: #fff;
 }
 .navbar .content .pages {
     display: flex;

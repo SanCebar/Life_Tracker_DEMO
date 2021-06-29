@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import apiClient from "../../services/apiClient"
 import "./Login.css"
 
 export default function Login ({ user, setUser }) {
@@ -8,6 +8,7 @@ export default function Login ({ user, setUser }) {
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
         email: "",
+        username: "",
         password: ""
     })
 
@@ -27,14 +28,16 @@ export default function Login ({ user, setUser }) {
         setIsLoading(true)
         setErrors((e) => ({ ...e, form: null}))
 
-        try {
-            // const res
-        } catch(err) {
-            console.log(err)
-            setErrors((e) => ({ ...e, form: "Invalid username/password combination"}))
-        } finally {
-            setIsLoading(false)
+        const { data, error } = await apiClient.loginUser({ email: form.email, password: form.password }) 
+        if (error) {
+          setErrors((e) => ({ ...e, form: error}))
         }
+        if (data?.user) {
+          setUser(data.user)
+          apiClient.setToken(data.token)
+        }
+
+        setIsLoading(false)
     }
 
     return (
@@ -44,6 +47,7 @@ export default function Login ({ user, setUser }) {
             <br />
             <div class="card">
                 <div className="form">
+
                     <div className="input-field">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -55,6 +59,19 @@ export default function Login ({ user, setUser }) {
                         />
                         {errors.email && <div className="error">{errors.email}</div>}
                     </div>
+
+                    {/* <div className="input-field">
+                        <label htmlFor="username">Username</label>
+                        <input 
+                            type="username"
+                            name="username"
+                            placeholder="user123"
+                            value={form.username}
+                            onChange={handleOnInputChange}
+                        />
+                        {errors.username && <div className="error">{errors.username}</div>}
+                    </div> */}
+
                     <div className="input-field">
                         <label htmlFor="password">Password</label>
                         <input 
@@ -66,9 +83,11 @@ export default function Login ({ user, setUser }) {
                         />
                         {errors.password && <div className="error">{errors.password}</div>}
                     </div>
+
                     <button className="btn" disabled={isLoading} onClick={handleOnSubmit}>
                         {isLoading ? "Loading..." : "Login"}
                     </button>
+
                 </div>
                 <div className="footer">
                     <p>

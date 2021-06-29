@@ -2,7 +2,8 @@
 
 :root {
   --main-bg-color: #f6f6fe;
-  --secondary-color: #ffc700;
+  --secondary-color: #5d77a5;
+  /* --secondary-color: #ffc700; */
   --secondary-color-dark: #d4a600;
   --tertiary-color: #4a6592;
 }

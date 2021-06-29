@@ -6,6 +6,10 @@
     padding: 5em 2em;
     /* background-color: var(--tertiary-color); */
 }
+.error {
+    color: red;
+    font-size: 0.8rem;
+}
 .login .card {
     display: flex;
     flex-direction: column;
@@ -32,8 +36,6 @@
 }
 .login .card .form .input-field .error {
     align-self: flex-end;
-    color: red;
-    font-size: 0.8rem;
 }
 .login .card .form label {
     margin-bottom: 5px;
