@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient"
 import "./Login.css"
 
 export default function Login ({ user, setUser }) {
+    const navigate = useNavigate()
+
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState({})
     const [form, setForm] = useState({
@@ -35,6 +37,7 @@ export default function Login ({ user, setUser }) {
         if (data?.user) {
           setUser(data.user)
           apiClient.setToken(data.token)
+          navigate("/activity")
         }
 
         setIsLoading(false)

@@ -1,11 +1,14 @@
-import { NavLink as Link } from "react-router-dom"
+import { NavLink as Link, useNavigate } from "react-router-dom"
 import apiClient from "../../services/apiClient";
 import "./Navbar.css";
 
 export default function Navbar({ user, setUser }) {
+  const navigate = useNavigate()
+
   const handleOnSignOut = (event) => {
     setUser({})
     apiClient.setToken(null)
+    navigate("/")
   }
 
   return (
@@ -18,10 +21,11 @@ export default function Navbar({ user, setUser }) {
           <li><Link to="/nutrition" activeClassName="active" end >Nutrition</Link></li>
         </ul>
         <span className="user-buttons">
-          {user.username ? 
-            <Link to="/" activeClassName="active-sign-out" end >
-              <button className="skewBtn sign-out-button" onClick={handleOnSignOut}>Sign Out</button>
-            </Link>
+          {user.username ?
+            <>
+            <span className="username">{user.username}</span> 
+            <button className="skewBtn sign-out-button" onClick={handleOnSignOut}>Sign Out</button>
+            </>
             : 
             <>
             <Link to="/login" activeClassName="active" end >

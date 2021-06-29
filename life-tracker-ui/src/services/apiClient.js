@@ -43,6 +43,10 @@ class ApiClient {
         return await this.request({ endpoint: `activity`, method: `GET`})
     }
 
+    async exerciseFeed() {
+        return await this.request({ endpoint: `exercises`, method: `GET`})
+    }
+
 }
 
 export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001")

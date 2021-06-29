@@ -41,6 +41,10 @@
 .navbar .content .user-buttons {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+}
+.navbar .content .user-buttons .username {
+    color: var(--secondary-color-dark);
 }
 .skewBtn, .user-buttons button {
     margin: 0 1rem;

@@ -7,6 +7,8 @@ import Home from "../Home/Home"
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Activity from '../Activity/Activity';
+import Exercise from '../Exercise/Exercise';
+import Nutrition from '../Nutrition/Nutrition';
 
 function App() {
   const [user, setUser] = useState({})
@@ -41,8 +43,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/activity" element={<Activity user={user} activityFeed={activityFeed} />} />
-          <Route path="/exercises" element={<Home />} />
-          <Route path="/nutrition" element={<Home />} />
+          <Route path="/exercises" element={<Exercise user={user} />} />
+          <Route path="/nutrition" element={<Nutrition user={user} />} />
           <Route path="/login" element={<Login user={user} setUser={setUser} />} />
           <Route path="/register" element={<Register user={user} setUser={setUser} />} />
         </Routes>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import "./Activity.css"
+import "./Nutrition.css"
 
-export default function Activity({ user, activityFeed }) {
+export default function Nutrition({ user }) {
     return (
         <div className="Activity">
             {Object.keys(user).length === 0 ?
@@ -12,14 +12,14 @@ export default function Activity({ user, activityFeed }) {
                 </> 
                 :
                 <>
-                <h1>Activity Feed</h1>
+                <h1>Nutrition Feed</h1>
                 <div className="activity-feed">
                     <div className="activity-box e">
-                        <span className="e-minutes">Total Exercise Minutes: {activityFeed.exerciseMin} </span>
+                        <span className="e-minutes"> </span>
                     </div>
                     
                     <div className="activity-box n">
-                        <span className="n-calories">Average Calorie Consumption: </span>
+                        <span className="n-calories"> </span>
                     </div>
                 </div>
                 </>
