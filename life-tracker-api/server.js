@@ -4,6 +4,7 @@ const morgan = require("morgan")
 const { PORT } = require("./config")
 const { NotFoundError } = require("./utils/errors")
 const authRoutes = require("./routes/auth")
+const activityRoutes = require("./routes/activities")
 const security = require("./middleware/security")
 
 const app = express()
@@ -19,7 +20,9 @@ app.use(morgan("tiny"))
 // for every request, check if token exists in auth header
 app.use(security.extractUserFromJwt)
 
+// routes
 app.use("/auth", authRoutes)
+app.use("/", activityRoutes)
 
 /** Handle 404 errors -- this matches everything */
 app.use((req, res, next) => {
