@@ -1,14 +1,8 @@
-import './App.css';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import apiClient from "../../services/apiClient";
-import Navbar from "../Navbar/Navbar";
-import Home from "../Home/Home"
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import Activity from '../Activity/Activity';
-import Exercise from '../Exercise/Exercise';
-import Nutrition from '../Nutrition/Nutrition';
+import { Activity, Exercise, Home, Login, Navbar, Nutrition, Register } from "components"
+import apiClient from "services/apiClient";
+import './App.css';
 
 function App() {
   const [user, setUser] = useState({})
