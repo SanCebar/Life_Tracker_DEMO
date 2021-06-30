@@ -1,14 +1,23 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Activity, Exercise, Home, Login, Navbar, Nutrition, Register } from "components"
+import { AuthContextProvider, useAuthContext } from "contexts/auth"
 import apiClient from "services/apiClient";
 import './App.css';
 
+export default function AppContainer() {
+  return (
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  )
+}
+
 function App() {
-  const [user, setUser] = useState({})
+  const {user, setUser} = useAuthContext()
   const [isFetching, setIsFetching] = useState(false)
   const [activityFeed, setActivityFeed] = useState({})
-  const [errors, setErrors] = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchActivityFeed = async () => {
@@ -16,11 +25,11 @@ function App() {
 
       const { data, error } = await apiClient.activityFeed()
       if (error) {
-        setErrors((e) => ({ ...e, db: error}))
+        setError((e) => ({ ...e, db: error}))
         setActivityFeed({})
       }
       if (data?.stats) {
-        setErrors(null)
+        setError(null)
         setActivityFeed(data.stats)
       } 
 
@@ -30,21 +39,32 @@ function App() {
     fetchActivityFeed()
   }, [user])
 
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const { data } = await apiClient.fetchUserFromToken()
+  //     if (data) {
+  //       setUser(data.user)
+  //     }
+  //   }
+
+  //   const token = 
+  // })
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar user={user} setUser={setUser} />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/activity" element={<Activity user={user} activityFeed={activityFeed} />} />
-          <Route path="/exercises" element={<Exercise user={user} />} />
-          <Route path="/nutrition" element={<Nutrition user={user} />} />
-          <Route path="/login" element={<Login user={user} setUser={setUser} />} />
-          <Route path="/register" element={<Register user={user} setUser={setUser} />} />
+          <Route path="/activity" element={<Activity activityFeed={activityFeed} />} />
+          <Route path="/exercises" element={<Exercise />} />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+// export default App;

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
+import { useAuthContext } from "contexts/auth"
 import "./Activity.css"
 
-export default function Activity({ user, activityFeed }) {
+export default function Activity({ activityFeed }) {
+    const { user } = useAuthContext()
+
     return (
         <div className="Activity">
             {Object.keys(user).length === 0 ?

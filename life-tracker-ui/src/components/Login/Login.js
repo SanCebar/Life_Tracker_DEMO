@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useLoginForm } from "hooks/useLoginForm";
+import { useAuthContext } from "contexts/auth";
 import "./Login.css"
 
-export default function Login ({ user, setUser }) {
+export default function Login () {
     const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } = useLoginForm({user, setUser})
+    const {user, setUser} = useAuthContext()
 
     return (
         <div className="login">

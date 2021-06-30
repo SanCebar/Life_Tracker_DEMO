@@ -1,9 +1,12 @@
-import { NavLink as Link, useNavigate } from "react-router-dom"
 import apiClient from "../../services/apiClient";
+import { NavLink as Link, useNavigate } from "react-router-dom"
+import { useAuthContext } from "contexts/auth";
 import "./Navbar.css";
 
-export default function Navbar({ user, setUser }) {
+export default function Navbar() {
   const navigate = useNavigate()
+  const {user, setUser} = useAuthContext()
+
 
   const handleOnSignOut = (event) => {
     setUser({})

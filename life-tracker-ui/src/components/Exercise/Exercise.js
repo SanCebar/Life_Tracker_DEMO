@@ -1,9 +1,12 @@
+import apiClient from "../../services/apiClient"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import apiClient from "../../services/apiClient"
+import { useAuthContext } from "contexts/auth"
 import "./Exercise.css"
 
-export default function Exercise({ user }) {
+export default function Exercise() {
+
+    const {user} = useAuthContext()
     const [exerciseFeed, setExerciseFeed] = useState([])
     const [errors, setErrors] = useState(null)
     const [isFetching, setIsFetching] = useState(false)

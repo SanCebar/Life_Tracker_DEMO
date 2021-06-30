@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useRegistrationForm } from "hooks/useRegistrationForm";
+import { useAuthContext } from "contexts/auth";
 import "./Register.css";
 
-export default function Register({ user, setUser }) {
+export default function Register() {
   const {form, errors, isLoading, handleOnInputChange, handleOnSubmit} = useRegistrationForm({ user, setUser })
+  const {user, setUser} = useAuthContext()
 
   return (
     <div className="register">
