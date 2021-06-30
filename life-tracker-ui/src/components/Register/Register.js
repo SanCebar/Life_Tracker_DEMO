@@ -1,67 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import apiClient from "../../services/apiClient";
+import { Link } from "react-router-dom";
+import { useRegistrationForm } from "../../hooks/useRegistrationForm";
 import "./Register.css";
 
 export default function Register({ user, setUser }) {
-  const navigate = useNavigate()
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [form, setForm] = useState({
-    email: "",
-    username: "",
-    password: "",
-    passwordConfirm: "",
-  });
-
-  const handleOnInputChange = (event) => {
-    if (event.target.name === "email") {
-      if (event.target.value.indexOf("@") === -1) {
-        setErrors((e) => ({ ...e, email: "Please enter a valid email." }));
-      } else {
-        setErrors((e) => ({ ...e, email: null }));
-      }
-    }
-
-    if (event.target.name === "passwordConfirm") {
-      if (event.target.value !== form.password) {
-        setErrors((e) => ({
-          ...e,
-          passwordConfirm: "Passwords do not match.",
-        }));
-      } else {
-        setErrors((e) => ({ ...e, passwordConfirm: null }));
-      }
-    }
-
-    setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
-  };
-
-  const handleOnSubmit = async () => {
-    setIsLoading(true);
-    setErrors((e) => ({ ...e, form: null }));
-
-    if (form.passwordConfirm !== form.password) {
-      setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match"}))
-      setIsLoading(false)
-      return
-    } else {
-      setErrors((e) => ({ ...e, passwordConfirm: null }))
-    }
-    
-    const { data, error } = await apiClient.registerUser({ email: form.email, username: form.username, password: form.password }) 
-    if (error) {
-      setErrors((e) => ({ ...e, form: error}))
-    }
-    if (data?.user) {
-      setUser(data.user)
-      apiClient.setToken(data.token)
-    }
-
-    setIsLoading(false)
-    navigate("/activity")
-  };
+  const {form, errors, isLoading, handleOnInputChange, handleOnSubmit} = useRegistrationForm({ user, setUser })
 
   return (
     <div className="register">
