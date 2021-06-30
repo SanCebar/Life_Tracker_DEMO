@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 5rem 2rem;
+    padding: 3em 2em;
     /* background-color: var(--tertiary-color); */
     color: var(--main-text-color);
 }
@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1em;
     margin: 0 auto;
     width: 50%;
 

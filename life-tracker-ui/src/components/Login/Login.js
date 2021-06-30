@@ -1,47 +1,9 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import apiClient from "../../services/apiClient"
+import { Link } from "react-router-dom";
+import { useLoginForm } from "hooks/useLoginForm";
 import "./Login.css"
 
 export default function Login ({ user, setUser }) {
-    const navigate = useNavigate()
-
-    const [isLoading, setIsLoading] = useState(false)
-    const [errors, setErrors] = useState({})
-    const [form, setForm] = useState({
-        email: "",
-        username: "",
-        password: ""
-    })
-
-    const handleOnInputChange = (event) => {
-        if (event.target.name === "email") {
-            if (event.target.value.indexOf("@") === -1) {
-                setErrors((e) => ({ ...e, email: "Please enter a valid email."}))
-            } else {
-                setErrors((e) => ({ ...e, email: null}))
-            }
-        }
-
-        setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
-    }
-
-    const handleOnSubmit = async () => {
-        setIsLoading(true)
-        setErrors((e) => ({ ...e, form: null}))
-
-        const { data, error } = await apiClient.loginUser({ email: form.email, password: form.password }) 
-        if (error) {
-          setErrors((e) => ({ ...e, form: error}))
-        }
-        if (data?.user) {
-          setUser(data.user)
-          apiClient.setToken(data.token)
-          navigate("/activity")
-        }
-
-        setIsLoading(false)
-    }
+    const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } = useLoginForm({user, setUser})
 
     return (
         <div className="login">

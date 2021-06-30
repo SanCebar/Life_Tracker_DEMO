@@ -27,3 +27,9 @@
     border-radius: 0.8em;
 
 }
+.Exercise a {
+    text-decoration: underline;
+}
+.Exercise a:hover {
+    text-decoration: none;
+}

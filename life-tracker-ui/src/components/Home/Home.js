@@ -1,5 +1,5 @@
 import './Home.css';
-import Hero from '../Hero/Hero';
+import { Hero } from "components";
 import watchImg from "./fit_watch_transparent.png"
 
 const bgImage =

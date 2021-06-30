@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useAuthenticationForm } from "./useAuthenticationForm";
 import apiClient from "services/apiClient";
 
-export const useRegistrationForm = ({ user, setUser }) => {
-  const { form, errors, setErrors, handleOnInputChange } = useAuthenticationForm({ user })
+export const useLoginForm = ({ user, setUser }) => {
+  const {form, errors, setErrors, handleOnInputChange } = useAuthenticationForm({ user })
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -11,17 +11,8 @@ export const useRegistrationForm = ({ user, setUser }) => {
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
 
-    if (form.passwordConfirm !== form.password) {
-      setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match" }));
-      setIsLoading(false);
-      return;
-    } else {
-      setErrors((e) => ({ ...e, passwordConfirm: null }));
-    }
-
-    const { data, error } = await apiClient.registerUser({
+    const { data, error } = await apiClient.loginUser({
       email: form.email,
-      username: form.username,
       password: form.password,
     });
     if (error) {
@@ -35,5 +26,11 @@ export const useRegistrationForm = ({ user, setUser }) => {
     setIsLoading(false);
   };
 
-  return { form, errors, isLoading, handleOnInputChange, handleOnSubmit };
+  return {
+    form,
+    errors,
+    isLoading,
+    handleOnInputChange,
+    handleOnSubmit,
+  };
 };
