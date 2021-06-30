@@ -4,8 +4,8 @@ import { useAuthContext } from "contexts/auth";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const navigate = useNavigate()
   const {user, setUser} = useAuthContext()
+  const navigate = useNavigate()
 
 
   const handleOnSignOut = (event) => {

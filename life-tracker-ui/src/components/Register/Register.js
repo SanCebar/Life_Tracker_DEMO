@@ -4,8 +4,8 @@ import { useAuthContext } from "contexts/auth";
 import "./Register.css";
 
 export default function Register() {
-  const {form, errors, isLoading, handleOnInputChange, handleOnSubmit} = useRegistrationForm({ user, setUser })
   const {user, setUser} = useAuthContext()
+  const {form, errors, isLoading, handleOnInputChange, handleOnSubmit} = useRegistrationForm({ user, setUser })
 
   return (
     <div className="register">

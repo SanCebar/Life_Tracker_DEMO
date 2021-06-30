@@ -4,10 +4,12 @@ class ApiClient {
     constructor(remoteHostUrl) {
         this.remoteHostUrl = remoteHostUrl
         this.token = null
+        this.tokenName = "life_tracker_token"
     }
 
     setToken(token) {
         this.token = token 
+        localStorage.setItem(this.tokenName, token)
     }
 
     async request({ endpoint, method = 'GET', data = {}}) {
@@ -37,6 +39,10 @@ class ApiClient {
 
     async registerUser(credentials) {
         return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials})
+    }
+
+    async fetchUserFromToken() {
+        return await this.request({ endpoint: `auth/me`, method: `GET` })
     }
 
     async activityFeed() {

@@ -4,8 +4,8 @@ import { useAuthContext } from "contexts/auth";
 import "./Login.css"
 
 export default function Login () {
-    const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } = useLoginForm({user, setUser})
     const {user, setUser} = useAuthContext()
+    const { form, errors, isLoading, handleOnInputChange, handleOnSubmit } = useLoginForm({user, setUser})
 
     return (
         <div className="login">

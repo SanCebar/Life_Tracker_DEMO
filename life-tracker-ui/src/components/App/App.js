@@ -39,16 +39,23 @@ function App() {
     fetchActivityFeed()
   }, [user])
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const { data } = await apiClient.fetchUserFromToken()
-  //     if (data) {
-  //       setUser(data.user)
-  //     }
-  //   }
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data, error } = await apiClient.fetchUserFromToken()
+      if (data) {
+        setUser(data.user)
+      }
+      if (error) {
+        setError(data.error)
+      }
+    }
 
-  //   const token = 
-  // })
+    const token = localStorage.getItem("life_tracker_token")
+    if (token) {
+      apiClient.setToken(token)
+      fetchUser()
+    }
+  }, [])
 
   return (
     <div className="App">

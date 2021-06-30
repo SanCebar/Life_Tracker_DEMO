@@ -4,6 +4,7 @@ import "./Activity.css"
 
 export default function Activity({ activityFeed }) {
     const { user } = useAuthContext()
+    console.log("Inside Activity: activityFeed...", activityFeed)
 
     return (
         <div className="Activity">
@@ -13,9 +14,15 @@ export default function Activity({ activityFeed }) {
                 <p>You can register for an account <Link to="/register">here</Link></p>
                 <p>Already have an account? <Link to="/login">Login</Link></p>
                 </> 
-                :
+                : <h1>Activity Feed</h1>
+            }
+            {/* {activityFeed && user.username ?
                 <>
-                <h1>Activity Feed</h1>
+                <h2>No available data.</h2>
+                <p>Try logging some exercises <Link to="/exercises">here</Link></p>
+                </> : null
+            } */}
+            {Object.keys(activityFeed).length !== 0 && !user.username ?
                 <div className="activity-feed">
                     <div className="activity-box e">
                         <span className="e-minutes">Total Exercise Minutes: {activityFeed.exerciseMin} </span>
@@ -24,9 +31,10 @@ export default function Activity({ activityFeed }) {
                     <div className="activity-box n">
                         <span className="n-calories">Average Calorie Consumption: </span>
                     </div>
-                </div>
-                </>
+                </div> : null
             }
+            
+                
         </div>
     )
 }
