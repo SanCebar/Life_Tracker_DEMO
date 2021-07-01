@@ -12,7 +12,7 @@ export default function Register() {
       <h2>Sign Up</h2>
       {errors.form && <div className="error">{errors.form}</div>}
       <br />
-      <div class="card">
+      <div className="card">
         <div className="form">
           
           <div className="input-field">

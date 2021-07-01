@@ -7,10 +7,9 @@ export default function Navbar() {
   const {user, setUser} = useAuthContext()
   const navigate = useNavigate()
 
-
-  const handleOnSignOut = (event) => {
+  const handleOnSignOut = async () => {
+    await apiClient.logoutUser()
     setUser({})
-    apiClient.setToken(null)
     navigate("/")
   }
 

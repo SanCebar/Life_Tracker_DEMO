@@ -16,7 +16,7 @@ export const useAuthenticationForm = ({ user }) => {
     //if a user is logged in, redirect to activity page
     if (user?.username) {
       navigate("/activity");
-    }
+    } 
   }, [user, navigate]);
 
   const handleOnInputChange = (event) => {

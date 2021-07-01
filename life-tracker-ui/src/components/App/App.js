@@ -46,12 +46,13 @@ function App() {
         setUser(data.user)
       }
       if (error) {
-        setError(data.error)
+        setError(error)
       }
     }
 
     const token = localStorage.getItem("life_tracker_token")
     if (token) {
+      console.log("Inside if for UseEffect")
       apiClient.setToken(token)
       fetchUser()
     }

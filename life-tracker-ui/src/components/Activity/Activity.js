@@ -4,7 +4,6 @@ import "./Activity.css"
 
 export default function Activity({ activityFeed }) {
     const { user } = useAuthContext()
-    console.log("Inside Activity: activityFeed...", activityFeed)
 
     return (
         <div className="Activity">
@@ -22,7 +21,7 @@ export default function Activity({ activityFeed }) {
                 <p>Try logging some exercises <Link to="/exercises">here</Link></p>
                 </> : null
             } */}
-            {Object.keys(activityFeed).length !== 0 && !user.username ?
+            {Object.keys(activityFeed).length !== 0 && user.username ?
                 <div className="activity-feed">
                     <div className="activity-box e">
                         <span className="e-minutes">Total Exercise Minutes: {activityFeed.exerciseMin} </span>

@@ -32,6 +32,11 @@
     align-items: flex-end;
     font-size: 1em;
 }
+.register .card .form input {
+    height: 2em;
+    border-radius: 0.15em;
+    border: none;
+}
 .register .card .form .input-field {
     display: flex;
     flex-direction: column;
