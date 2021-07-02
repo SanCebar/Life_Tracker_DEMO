@@ -21,6 +21,8 @@ export const useRegistrationForm = ({ user, setUser }) => {
 
     const { data, error } = await apiClient.registerUser({
       email: form.email,
+      firstName: form.firstName,
+      lastName: form.lastName,
       username: form.username,
       password: form.password,
     });

@@ -8,6 +8,8 @@ export const useAuthenticationForm = ({ user }) => {
   const [form, setForm] = useState({
     email: "",
     username: "",
+    firstName: "",
+    lastName: "",
     password: "",
     passwordConfirm: "",
   });

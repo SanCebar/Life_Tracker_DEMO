@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
 import { useAuthContext } from "contexts/auth"
+import { Navbar } from "components"
 import "./Nutrition.css"
 
 export default function Nutrition() {
     const {user} = useAuthContext()
 
     return (
+        <>
+        <Navbar />
         <div className="Activity">
             {Object.keys(user).length === 0 ?
                 <>
@@ -28,5 +31,6 @@ export default function Nutrition() {
                 </>
             }
         </div>
+        </>
     )
 }

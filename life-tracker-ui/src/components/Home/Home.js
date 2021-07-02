@@ -1,5 +1,5 @@
 import './Home.css';
-import { Hero } from "components";
+import { Hero, Navbar } from "components";
 import watchImg from "./fit_watch_transparent.png"
 
 const bgImage =
@@ -10,6 +10,7 @@ const heroText = "Take Control of Your Health"
 export default function Home() {
     return (
         <div className="Home">
+            <Navbar />
             <Hero heroText={heroText} bgImage={bgImage} />
             <div className="activities">
                 

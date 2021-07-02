@@ -37,6 +37,7 @@
     padding-bottom: 0.5em;
     border-bottom: solid 2px var(--secondary-color);
     transition: ease-in 0.25s;
+    transition-delay: 3s;
 }
 .navbar .content .user-buttons {
     display: flex;

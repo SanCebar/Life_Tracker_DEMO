@@ -55,9 +55,29 @@
     padding: 2px 8px;
     margin-left: auto;
 }
+.Exercise .x-card-content .x-stats {
+    font-size: 1.5rem;
+    padding-left: 2em;
+}
 .Exercise a {
     text-decoration: underline;
 }
 .Exercise a:hover {
     text-decoration: none;
+}
+.Exercise button {
+    margin: 0 1rem;
+    padding: 0.5rem;
+    outline: none;
+    cursor: pointer;
+    background: var(--main-bg-color);
+    transition: .25s;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid var(--main-text-color);
+    color: var(--main-text-color);
+    border-radius: 5px;
+}
+.Exercise button:hover {
+    transform: translateY(2px);
 }

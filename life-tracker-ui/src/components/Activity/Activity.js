@@ -1,39 +1,57 @@
-import { Link } from "react-router-dom"
-import { useAuthContext } from "contexts/auth"
-import "./Activity.css"
+import { Link } from "react-router-dom";
+import { useAuthContext } from "contexts/auth";
+import "./Activity.css";
+import { Navbar } from "components";
 
 export default function Activity({ activityFeed }) {
-    const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
-    return (
-        <div className="Activity">
-            {Object.keys(user).length === 0 ?
-                <>
-                <h1>Unauthorized User</h1>
-                <p>You can register for an account <Link to="/register">here</Link></p>
-                <p>Already have an account? <Link to="/login">Login</Link></p>
-                </> 
-                : <h1>Activity Feed</h1>
-            }
-            {/* {activityFeed && user.username ?
+  return (
+    <>
+      <Navbar />
+      <div className="Activity">
+        {Object.keys(user).length === 0 ? (
+          <>
+            <h1>Unauthorized User</h1>
+            <p>
+              You can register for an account <Link to="/register">here</Link>
+            </p>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+          </>
+        ) : (
+          <>
+          <h1>Activity Feed</h1>
+          <div className="redirect-btns">
+            <Link to="/exercises">
+                <button className="redirect-x">Exercises</button>
+            </Link>
+          </div>
+          </>
+        )}
+        {!activityFeed.exerciseMin && user.username ?
                 <>
                 <h2>No available data.</h2>
-                <p>Try logging some exercises <Link to="/exercises">here</Link></p>
+                <p>Try logging some exercises</p>
                 </> : null
-            } */}
-            {Object.keys(activityFeed).length !== 0 && user.username ?
-                <div className="activity-feed">
-                    <div className="activity-box e">
-                        <span className="e-minutes">Total Exercise Minutes: {activityFeed.exerciseMin} </span>
-                    </div>
-                    
-                    <div className="activity-box n">
-                        <span className="n-calories">Average Calorie Consumption: </span>
-                    </div>
-                </div> : null
             }
-            
-                
-        </div>
-    )
+        {activityFeed.exerciseMin && user.username ? (
+          <>
+          <div className="activity-feed">
+            <div className="activity-box e">
+              <span className="e-minutes">
+                Total Exercise Minutes: {activityFeed.exerciseMin}{" "}
+              </span>
+            </div>
+
+            {/* <div className="activity-box n">
+              <span className="n-calories">Average Calorie Consumption: </span>
+            </div> */}
+          </div>
+          </>
+        ) : null}
+      </div>
+    </>
+  );
 }

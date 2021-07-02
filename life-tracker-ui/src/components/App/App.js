@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Activity, Exercise, Home, Login, Navbar, Nutrition, Register } from "components"
+import { Activity, Exercise, Home, Login, Nutrition, Register } from "components"
 import { AuthContextProvider, useAuthContext } from "contexts/auth"
 import apiClient from "services/apiClient";
 import './App.css';
@@ -17,6 +17,7 @@ function App() {
   const {user, setUser} = useAuthContext()
   const [isFetching, setIsFetching] = useState(false)
   const [activityFeed, setActivityFeed] = useState({})
+  const [exerciseFeed, setExerciseFeed] = useState([])
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
     }
 
     fetchActivityFeed()
-  }, [user])
+  }, [user, exerciseFeed])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -61,11 +62,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/activity" element={<Activity activityFeed={activityFeed} />} />
-          <Route path="/exercises" element={<Exercise />} />
+          <Route path="/exercises" element={<Exercise exerciseFeed={exerciseFeed} setExerciseFeed={setExerciseFeed} />} />
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

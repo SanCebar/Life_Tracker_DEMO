@@ -20,7 +20,7 @@ export default function Navbar() {
         <ul className="pages">
           <li><Link to="/activity" activeClassName="active" end >Activity</Link></li>
           <li><Link to="/exercises" activeClassName="active" end >Exercises</Link></li>
-          <li><Link to="/nutrition" activeClassName="active" end >Nutrition</Link></li>
+          {/* <li><Link to="/nutrition" activeClassName="active" end >Nutrition</Link></li> */}
         </ul>
         <span className="user-buttons">
           {user.username ?
