@@ -9,7 +9,7 @@
   --secondary-color: #ffc700;
   --secondary-color-dark: #d4a600;
   --tertiary-color: #4a6592;
-  --box-shadow-color: rgba(0, 0, 0, .2);
+  --box-shadow-color: rgba(0, 0, 0, 0.2);
   --gradient: linear-gradient(
     45deg,
     #506897,
@@ -19,7 +19,13 @@
     #dfc99e,
     #e3b66d,
     #cc956c
-  )
+  );
+  --gradient2: linear-gradient(
+    225deg,
+    /* #e3b66d, */
+    #506897,
+    #000
+  );
 }
 
 body {

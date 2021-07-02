@@ -41,9 +41,11 @@
 .Activity .activity-box {
     height: 10em;
     width: 15em;
-    background: transparent;
-    border: solid 1px;
+    background: var(--gradient);
+    /* border: solid 1px; */
     border-radius: 0.8em;
+    box-shadow: 0.8em 0.8em 10px -2px var(--box-shadow-color);
+    background-size: 100%;
 
     margin: 0 0.5em;
     padding: 1em 2em;

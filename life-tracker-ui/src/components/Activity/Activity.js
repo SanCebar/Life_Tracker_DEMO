@@ -41,7 +41,7 @@ export default function Activity({ activityFeed }) {
           <div className="activity-feed">
             <div className="activity-box e">
               <span className="e-minutes">
-                Total Exercise Minutes: {activityFeed.exerciseMin}{" "}
+                <h1> Total Exercise Minutes: {activityFeed.exerciseMin}{" "}</h1>
               </span>
             </div>
 
