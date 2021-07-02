@@ -31,7 +31,7 @@ router.post("/exercises", requireAuthenticatedUser, async (req, res, next) => {
     try {
         const { email } = res.locals.user;
         const user = await User.fetchUserByEmail(email)
-        const exercise = await Exercise.logNewExercise({ exercise: req.body.exercise, user })
+        const exercise = await Exercise.logNewExercise({ exercise: req.body, user })
         return res.status(201).json({exercise})
     } catch(err) {
         next(err)

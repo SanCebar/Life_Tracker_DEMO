@@ -21,7 +21,8 @@ class Exercise {
     const result = await db.query(
         `
             SELECT * FROM exercises 
-            WHERE user_id = (SELECT id FROM users WHERE email = $1);
+            WHERE user_id = (SELECT id FROM users WHERE email = $1)
+            ORDER BY timestamp DESC;
         `, [user.email]
     );
 
